@@ -1,0 +1,94 @@
+version: '3.9'
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: always
+    container_name: qdrant
+    ports:
+      - 6333:6333
+      - 6334:6334
+    expose:
+      - 6333
+      - 6334
+      - 6335
+    volumes:
+      - ./qdrant_data:/qdrant/storage
+    env_file:
+      - .env
+    environment:
+      QDRANT__LOG_LEVEL: "INFO"
+
+  mnma-upload:
+    build: ./mnma-upload
+    volumes:
+      - ./mnma-upload:/usr/src/app
+    ports:
+      - 8001:8000
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/usr/src
+      - PYTHONUNBUFFERED=TRUE
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+      - AWS_FILES_PATH=${AWS_FILES_PATH}
+      - LOCAL_FILES_PATH=${LOCAL_FILES_PATH}
+      - RDS_DB_INSTANCE=${RDS_DB_INSTANCE}
+      - RDS_DB_NAME=${RDS_DB_NAME}
+      - RDS_DB_USER=${RDS_DB_USER}
+      - RDS_DB_PASSWORD=${RDS_DB_PASSWORD}
+      - RDS_DB_PORT=${RDS_DB_PORT}
+
+  mnma-index:
+    build: ./mnma-index
+    volumes:
+      - ./mnma-index:/usr/src/app
+    ports:
+      - 8002:8000
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/usr/src
+      - PYTHONUNBUFFERED=TRUE
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+      - AWS_FILES_PATH=${AWS_FILES_PATH}
+      - LOCAL_FILES_PATH=${LOCAL_FILES_PATH}
+      - QDRANT_BOOTSTRAP=${QDRANT_BOOTSTRAP}
+      - QDRANT_COLLECTION=${QDRANT_COLLECTION}
+      - EMBEDDING_MODEL_ID=${EMBEDDING_MODEL_ID}
+      - EMBEDDING_SIZE=${EMBEDDING_SIZE}
+      - RDS_DB_INSTANCE=${RDS_DB_INSTANCE}
+      - RDS_DB_NAME=${RDS_DB_NAME}
+      - RDS_DB_USER=${RDS_DB_USER}
+      - RDS_DB_PASSWORD=${RDS_DB_PASSWORD}
+      - RDS_DB_PORT=${RDS_DB_PORT}
+    depends_on:
+      - mnma-upload
+      - qdrant
+
+  mnma-chat:
+    build: ./mnma-chat
+    volumes:
+      - ./mnma-chat:/usr/src/app
+    ports:
+      - 8003:8000
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/usr/src
+      - PYTHONUNBUFFERED=TRUE
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - QDRANT_BOOTSTRAP=${QDRANT_BOOTSTRAP}
+      - QDRANT_COLLECTION=${QDRANT_COLLECTION}
+      - EMBEDDING_MODEL_ID=${EMBEDDING_MODEL_ID}
+      - CHAT_MODEL_ID=${CHAT_MODEL_ID}
+    depends_on:
+      - qdrant
+    

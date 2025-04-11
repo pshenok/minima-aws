@@ -1,0 +1,23 @@
+rds:
+  create_table: |
+    CREATE TABLE IF NOT EXISTS peakdefence (
+      id SERIAL PRIMARY KEY,
+      file_id VARCHAR(255) UNIQUE NOT NULL,
+      user_id VARCHAR(255) NOT NULL,
+      file_name VARCHAR(255) NOT NULL,
+      status VARCHAR(50) NOT NULL
+    );
+  insert_record: |
+    INSERT INTO peakdefence (file_id, user_id, file_name, status) VALUES (%s, %s, %s, %s) RETURNING id, file_id, user_id, file_name, status;
+  
+  records_by_user_id: |
+    SELECT * FROM peakdefence WHERE user_id = %s
+
+  update_files_status: |
+    UPDATE peakdefence SET status = %s WHERE file_id = ANY(%s) RETURNING id, file_id, user_id, file_name, status
+
+  files_status_by_user_id: |
+    SELECT file_name, status FROM peakdefence WHERE user_id = %s
+
+  delete_files: |
+    DELETE FROM peakdefence WHERE file_id = ANY(%s) AND user_id = %s RETURNING id, file_id, user_id, file_name, status;
