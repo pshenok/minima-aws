@@ -22,7 +22,7 @@ Minima AWS operates as a set of containerized services that work together to:
 ## 🏗️ Prerequisites: Setting Up AWS Services
 
 ### ✅ **Required AWS Resources**
-- 🪣 **Amazon S3** – Store and retrieve documents. (before running application crate dir 'upload' inside bucket)
+- 🪣 **Amazon S3** – Store and retrieve documents. (before running application create dir 'upload' inside bucket)
 - 📩 **Amazon SQS** – Handle document processing requests.
 - 🛢️ **Amazon RDS (PostgreSQL/MySQL)** – Store metadata about indexed documents.
 - 🤖 **AWS Bedrock** – Used for:
