@@ -107,7 +107,7 @@ curl -X 'POST' \
   'http://localhost:8001/upload/upload_files/?user_id=4637951a-7b45-4af4-805c-1f1c471668f3' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
-  -F 'files=@Black.pdf;type=application/pdf'
+  -F 'files=@example.pdf;type=application/pdf'
 ```
 
 ### 2️⃣ **API Endpoint Details**
@@ -117,7 +117,7 @@ curl -X 'POST' \
 - **Headers:**
   - `accept: application/json`
   - `Content-Type: multipart/form-data`
-- **Body:** A file (e.g., `Black.pdf`)
+- **Body:** A file (e.g., `example.pdf`)
 
 ### 3️⃣ **Expected Server Response (JSON)**
 ```json
