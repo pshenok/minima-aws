@@ -72,6 +72,22 @@ CHAT_MODEL_ID=anthropic.claude-v2
 
 ---
 
+📌 How to quickly get the Amazon Bedrock Model ARN from AWS Console
+	1.	Go to AWS Bedrock console:
+	•	https://console.aws.amazon.com/bedrock
+	2.	Navigate to “Model Access” (in the sidebar on the left).
+	3.	Locate your desired model in the displayed list:
+	•	Each model has a name, provider, and associated ARN clearly displayed.
+	4.	Copy the model ARN, which looks like:
+
+```
+arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-v2
+```
+
+You can now use this ARN directly in your configurations.
+
+---
+
 ## 🐳 Running Minima AWS with Docker Compose
 
 Once the `.env` file is set up, deploy the application using **Docker Compose**:
