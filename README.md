@@ -72,21 +72,34 @@ CHAT_MODEL_ID=anthropic.claude-v2
 
 ---
 
-📌 How to quickly get the Amazon Bedrock Model ARN from AWS Console
-
-1. Go to AWS Bedrock console:
- - https://console.aws.amazon.com/bedrock
-
-2. Navigate to “Model Access” (in the sidebar on the left).
-3. Locate your desired model in the displayed list:
- - Each model has a name, provider, and associated ARN clearly displayed.
-4. Copy the model ARN, which looks like:
+## Example (CHAT_MODEL_ID)
 
 ```
-arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-v2
+arn:aws:bedrock:us-west-2:123456789012:model/anthropic.claude-3-sonnet-20240229-v1:0
 ```
 
-You can now use this ARN directly in your configurations.
+## Components Breakdown
+
+| Component | Example | Description |
+|-----------|---------|-------------|
+| Service Prefix | `arn:aws:bedrock:` | Fixed prefix for all AWS Bedrock ARNs |
+| Region | `us-west-2` | AWS region where the model is deployed |
+| Account ID | `123456789012` | Your AWS account ID |
+| Resource Type | `model/` | Identifier for the type of resource |
+| Model ID | `anthropic.claude-3-sonnet-20240229-v1:0` | Full model identifier |
+
+The Model ID consists of:
+- Provider: `anthropic`
+- Model name: `claude-3-sonnet-20240229-v1`
+- Version: `0`
+
+## Building Your Own ARN
+
+To create your own AWS Bedrock ARN, replace the components with your specific values:
+
+1. Use your desired AWS region
+2. Insert your actual AWS account ID
+3. Select the appropriate model ID from **available** Bedrock models
 
 ---
 
