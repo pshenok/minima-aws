@@ -63,7 +63,7 @@ QDRANT_COLLECTION=minima_collection
 # AWS Bedrock - LLM & Embedding Model
 EMBEDDING_MODEL_ID=amazon.titan-embed-text-v1
 EMBEDDING_SIZE=1024
-CHAT_MODEL_ID=anthropic.claude-v2
+CHAT_MODEL_ID=arn:aws:bedrock:us-west-2:123456789012:model/anthropic.claude-3-sonnet-20240229-v1:0
 ```
 
 ### 📝 Explanation:
