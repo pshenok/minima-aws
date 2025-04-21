@@ -67,6 +67,7 @@ CHAT_MODEL_ID=arn:aws:bedrock:us-west-2:123456789012:model/anthropic.claude-3-so
 ```
 
 ### 📝 Explanation:
+
 - **`EMBEDDING_MODEL_ID`** → Embedding model for converting documents into vector representations.
 - **`CHAT_MODEL_ID`** → LLM model for answering user queries.
 
