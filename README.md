@@ -233,6 +233,4 @@ Minima AWS is licensed under the **Mozilla Public License v2.0 (MPLv2)**.
 - ❓ **Issues?** Open a [GitHub Issue](https://github.com/pshenok/minima-aws/issues).
 - 💬 **Questions?** Contact us via **GitHub Discussions**.
 
-🚀 **Deploy Minima AWS and unlock the power of AWS Bedrock-powered RAG!** 🚀
-```
 
