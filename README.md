@@ -46,7 +46,7 @@ AWS_FILES_PATH=s3_folder_path
 # SQS Configuration
 AWS_SQS_QUEUE=your_sqs_queue_name
 
-# Local File Storage
+# Local File Storage (optional)
 LOCAL_FILES_PATH=/path/to/local/storage
 
 # RDS Database Configuration
