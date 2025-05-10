@@ -2,6 +2,7 @@
   <a href="https://www.mnma.ai/" target="blank"><img src="assets/logo-full.svg" width="300" alt="MNMA Logo" /></a>
 </p>
 
+
 # 🚀 Minima AWS – Cloud-Based RAG Solution
 
 **Minima AWS** is an open-source, cloud-based **Retrieval-Augmented Generation (RAG)** framework that integrates with **AWS services**, including **S3, SQS, RDS**, and **AWS Bedrock** for embedding models and LLMs. This setup enables efficient document retrieval and chat-based interaction with your indexed data.
